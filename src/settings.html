@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none';" />
+  <title>Lumo Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="settings.css" />
+  <script defer src="settings.js"></script>
+</head>
+<body>
+  <main class="settings-shell">
+    <header class="settings-header">
+      <div class="settings-title-group">
+        <img class="settings-mark" src="../assets/lumo.svg" alt="" aria-hidden="true" />
+        <div class="settings-heading-copy">
+          <div class="settings-eyebrow">LUMO / PREFERENCES</div>
+          <h1>Settings</h1>
+          <p class="settings-intro">Make Lumo work your way.</p>
+        </div>
+      </div>
+      <button class="settings-close" id="closeSettings" type="button" title="Close settings" aria-label="Close settings">×</button>
+    </header>
+
+    <form id="settingsForm">
+      <section class="settings-section" aria-labelledby="searchSectionTitle">
+        <div class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4.2 4.2"/></svg>
+          </span>
+          <div>
+            <h2 id="searchSectionTitle">Search</h2>
+            <p>Choose how Lumo searches the web.</p>
+          </div>
+        </div>
+        <label for="searchEngine">Search engine</label>
+        <div class="control-wrap select-wrap">
+          <select id="searchEngine" name="searchEngine">
+            <option value="duckduckgo">DuckDuckGo</option>
+            <option value="google">Google</option>
+            <option value="bing">Bing</option>
+            <option value="startpage">Startpage</option>
+          </select>
+          <svg class="select-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </div>
+      </section>
+
+      <section class="settings-section" aria-labelledby="networkSectionTitle">
+        <div class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4"/><path d="M12 2.8v3.1M12 18.1v3.1M2.8 12h3.1M18.1 12h3.1M5.5 5.5l2.2 2.2M16.3 16.3l2.2 2.2M18.5 5.5l-2.2 2.2M7.7 16.3l-2.2 2.2"/></svg>
+          </span>
+          <div>
+            <h2 id="networkSectionTitle">Network</h2>
+            <p>Control how Lumo connects.</p>
+          </div>
+        </div>
+        <label for="networkMode">Connection mode</label>
+        <div class="control-wrap select-wrap">
+          <select id="networkMode" name="networkMode">
+            <option value="custom">Custom proxy</option>
+            <option value="system">System proxy</option>
+            <option value="direct">Direct connection</option>
+          </select>
+          <svg class="select-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </div>
+        <label for="proxyUrl" id="proxyUrlLabel">Proxy address</label>
+        <input id="proxyUrl" name="proxyUrl" type="text" spellcheck="false" autocomplete="off" placeholder="socks5://127.0.0.1:10808" />
+        <p class="field-hint">SOCKS5, SOCKS4 or HTTP proxy. Example: 127.0.0.1:10808.</p>
+      </section>
+
+      <section class="settings-section" aria-labelledby="startupSectionTitle">
+        <div class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5"/><path d="M6.5 10v9.5h11V10M10 19.5v-6h4v6"/></svg>
+          </span>
+          <div>
+            <h2 id="startupSectionTitle">On startup</h2>
+            <p>Choose what Lumo opens next time.</p>
+          </div>
+        </div>
+        <label for="startupBehavior">When Lumo starts</label>
+        <div class="control-wrap select-wrap">
+          <select id="startupBehavior" name="startupBehavior">
+            <option value="restore">Restore previous session</option>
+            <option value="newtab">Open a new tab</option>
+          </select>
+          <svg class="select-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </div>
+        <p class="field-hint">This setting applies the next time you launch Lumo.</p>
+      </section>
+
+      <section class="settings-section" aria-labelledby="permissionSectionTitle">
+        <div class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 19 6v5.5c0 4.5-3 7.4-7 9.5-4-2.1-7-5-7-9.5V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div>
+            <h2 id="permissionSectionTitle">Site permissions</h2>
+            <p>Review grants made during this session.</p>
+          </div>
+        </div>
+        <div class="permission-list" id="permissionList" aria-live="polite">
+          <p class="empty-state">No site permissions have been decided this session.</p>
+        </div>
+        <button class="secondary-button full-width-button" id="resetAllPermissions" type="button">Reset all site permissions</button>
+        <p class="field-hint">Permissions are remembered only until Lumo closes. Resetting a decision makes the site ask again next time.</p>
+      </section>
+
+      <section class="settings-section" aria-labelledby="bookmarkSectionTitle">
+        <div class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 4.5h12v16l-6-3.8-6 3.8v-16Z"/><path d="M9 8h6"/></svg>
+          </span>
+          <div>
+            <h2 id="bookmarkSectionTitle">Bookmarks</h2>
+            <p>Move bookmarks into or out of Lumo.</p>
+          </div>
+        </div>
+        <div class="settings-button-row">
+          <button class="secondary-button" id="importBookmarks" type="button">Import</button>
+          <button class="secondary-button" id="exportBookmarks" type="button">Export HTML</button>
+        </div>
+        <p class="field-hint">Import supports browser bookmark HTML or JSON bookmark arrays. Duplicate URLs are skipped.</p>
+      </section>
+
+      <section class="settings-section" aria-labelledby="clearDataSectionTitle">
+        <div class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 10v7M14 10v7"/></svg>
+          </span>
+          <div>
+            <h2 id="clearDataSectionTitle">Clear browsing data</h2>
+            <p>Choose exactly what to remove.</p>
+          </div>
+        </div>
+        <div class="clear-data-options">
+          <label class="check-row"><input id="clearHistory" type="checkbox" /> <span><strong>Browsing history</strong><small>Remove visited-page records stored by Lumo.</small></span></label>
+          <label class="check-row"><input id="clearCookies" type="checkbox" /> <span><strong>Cookies and authentication cache</strong><small>May sign you out of websites.</small></span></label>
+          <label class="check-row"><input id="clearSiteStorage" type="checkbox" /> <span><strong>Site storage</strong><small>Local storage, databases and service workers.</small></span></label>
+          <label class="check-row"><input id="clearCache" type="checkbox" /> <span><strong>Cached files</strong><small>Web content may load more slowly next time.</small></span></label>
+          <label class="check-row"><input id="clearDownloadList" type="checkbox" /> <span><strong>Download history</strong><small>Downloaded files remain on disk.</small></span></label>
+          <label class="check-row"><input id="clearPermissions" type="checkbox" /> <span><strong>Site permission decisions</strong><small>Sites will ask again when needed.</small></span></label>
+        </div>
+        <button class="danger-button full-width-button" id="clearBrowsingData" type="button">Clear selected data…</button>
+      </section>
+
+      <div class="route-status" id="routeStatus" role="status" aria-live="polite">Loading current settings…</div>
+      <div class="settings-notice" id="settingsNotice" role="status" aria-live="polite" hidden></div>
+      <div class="settings-actions">
+        <button class="secondary-button" id="cancelSettings" type="button">Cancel</button>
+        <button class="save-button" id="saveSettings" type="submit"><span>Save settings</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></button>
+      </div>
+    </form>
+    <footer>External requests stay paused if Lumo cannot apply the selected route.</footer>
+  </main>
+</body>
+</html>

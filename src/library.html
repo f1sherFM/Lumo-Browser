@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none';" />
+  <title>Lumo Library</title>
+  <link rel="stylesheet" href="library.css" />
+  <script defer src="library.js"></script>
+</head>
+<body>
+  <main class="library-shell" aria-label="Lumo library">
+    <header class="library-header">
+      <div>
+        <div class="eyebrow">LUMO / LIBRARY</div>
+        <h1 id="panelTitle">History</h1>
+      </div>
+      <button class="close-button" id="closeLibrary" type="button" title="Close library" aria-label="Close library">×</button>
+    </header>
+
+    <nav class="library-tabs" aria-label="Library sections">
+      <button type="button" class="library-tab active" data-kind="history" aria-pressed="true">History</button>
+      <button type="button" class="library-tab" data-kind="bookmarks" aria-pressed="false">Bookmarks</button>
+      <button type="button" class="library-tab" data-kind="downloads" aria-pressed="false">Downloads</button>
+    </nav>
+
+    <div class="list-toolbar">
+      <span class="list-caption" id="listCaption">Recently visited</span>
+      <button type="button" class="text-action" id="clearAction" hidden>Clear</button>
+    </div>
+
+    <section class="library-list" id="libraryList" aria-live="polite" aria-label="Library items"></section>
+    <footer class="library-footer" id="libraryFooter">Saved locally on this device.</footer>
+  </main>
+</body>
+</html>

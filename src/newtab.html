@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none';" />
+  <title>Lumo — New tab</title>
+  <link rel="stylesheet" href="newtab.css" />
+  <script defer src="newtab.js"></script>
+</head>
+<body>
+  <main class="newtab">
+    <section class="hero" aria-label="New tab search">
+      <div class="emblem-aura" aria-hidden="true">
+        <svg class="emblem" viewBox="0 0 256 256" focusable="false">
+          <defs>
+            <radialGradient id="heroPlanet" cx="31%" cy="20%" r="82%"><stop offset="0" stop-color="#d9b5ff"/><stop offset=".34" stop-color="#9b5cff"/><stop offset=".72" stop-color="#6438e8"/><stop offset="1" stop-color="#24184e"/></radialGradient>
+            <linearGradient id="heroRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0ff"/><stop offset=".45" stop-color="#c58cff"/><stop offset="1" stop-color="#6540e8"/></linearGradient>
+            <filter id="heroGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse class="orbit-ring-back" cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="#8b5cff" stroke-width="12" opacity=".72"/>
+          <circle class="orbit-planet" cx="119" cy="130" r="70" fill="url(#heroPlanet)" stroke="#d6b2ff" stroke-opacity=".7" stroke-width="3"/>
+          <ellipse class="orbit-ring-front" cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="url(#heroRing)" stroke-width="12" pathLength="1000" stroke-dasharray="500 500" stroke-dashoffset="0" stroke-linecap="round" filter="url(#heroGlow)"/>
+          <path class="orbit-star" d="M203 54 C207 70 213 76 229 80 C213 84 207 90 203 106 C199 90 193 84 177 80 C193 76 199 70 203 54Z" fill="#f3d8ff" filter="url(#heroGlow)"/>
+        </svg>
+      </div>
+      <div class="eyebrow">A QUIETER CORNER OF THE INTERNET</div>
+      <h1>Find your own flow.</h1>
+      <p class="subtitle">A little less noise. A little more you.</p>
+      <form class="search" id="searchForm" autocomplete="off">
+        <svg class="search-sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8 14.5 9.5 21.2 12l-6.7 2.5L12 21.2l-2.5-6.7L2.8 12l6.7-2.5L12 2.8Z" /></svg>
+        <input id="searchInput" type="text" placeholder="Search anything..." aria-label="Search the web or enter an address" spellcheck="false" autocomplete="off" />
+        <kbd>CTRL&nbsp; K</kbd>
+        <button class="sr-only" type="submit" tabindex="-1" aria-hidden="true">Search</button>
+      </form>
+    </section>
+
+    <section class="quick-section" aria-label="Quick launch">
+      <div class="section-heading">PICK UP WHERE YOU LEFT OFF</div>
+      <div class="quick-grid">
+        <a class="quick-card" href="https://github.com/" title="Open GitHub">
+          <span class="quick-icon github" aria-hidden="true">G</span>
+          <span class="quick-title">GitHub</span>
+          <span class="quick-subtitle">Your projects</span>
+        </a>
+        <a class="quick-card" href="https://www.figma.com/" title="Open Figma">
+          <span class="quick-icon figma" aria-hidden="true">◌</span>
+          <span class="quick-title">Figma</span>
+          <span class="quick-subtitle">Design space</span>
+        </a>
+        <a class="quick-card" href="https://www.youtube.com/" title="Open YouTube">
+          <span class="quick-icon youtube" aria-hidden="true">▶</span>
+          <span class="quick-title">YouTube</span>
+          <span class="quick-subtitle">Watch later</span>
+        </a>
+        <a class="quick-card" href="https://www.cscastart.com/" title="Open CSCA Start">
+          <span class="quick-icon study" aria-hidden="true">文</span>
+          <span class="quick-title">CSCA Start</span>
+          <span class="quick-subtitle">Study portal</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="focus-card" aria-label="Focus note">
+      <div class="focus-mark" aria-hidden="true">☾</div>
+      <div class="focus-copy">
+        <div class="focus-title">A moment for yourself</div>
+        <div class="focus-subtitle">Keep one thing in focus. Let the rest wait.</div>
+      </div>
+      <div class="focus-badge"><span></span> FOCUS MODE</div>
+    </section>
+    <footer><span class="footer-dot"></span> Designed to feel calm, even with twenty tabs open.</footer>
+  </main>
+</body>
+</html>

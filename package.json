@@ -1,0 +1,74 @@
+{
+  "name": "lumo-browser",
+  "version": "0.10.11",
+  "productName": "Lumo",
+  "private": true,
+  "description": "Lumo MVP: Windows-first Chromium browser with Orbit branding, vertical overlay tabs, session, search/network settings, managed site permissions, bookmark import/export, browsing-data controls, persistent site shortcuts, new-tab intro flash prevention, history, and downloads.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check src/core.js && node --check src/bookmarks.js && node --check src/permissions.js && node --check src/main.js && node --check src/preload.js && node --check src/tab-preload.js && node --check src/settings-preload.js && node --check src/sidebar-preload.js && node --check src/sidebar.js && node --check src/renderer.js && node --check src/newtab.js && node --check src/settings.js && node --check src/library.js && node --check src/library-preload.js && node --check scripts/check-release-config.js && node scripts/check-release-config.js",
+    "test": "node --test --test-concurrency=1",
+    "check:release": "node scripts/check-release-config.js",
+    "pack:win": "npm run check && npm test && npx --yes electron-builder@26 --win --dir --x64",
+    "dist:win:installer": "npm run check && npm test && npx --yes electron-builder@26 --win nsis --x64",
+    "dist:win:portable": "npm run check && npm test && npx --yes electron-builder@26 --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "^44.7.2"
+  },
+  "build": {
+    "appId": "computer.lumo.browser",
+    "productName": "Lumo",
+    "asar": true,
+    "compression": "normal",
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "lumo.config.json",
+      "package.json",
+      "!tests/**",
+      "!scripts/**",
+      "!README.md"
+    ],
+    "win": {
+      "icon": "assets/lumo.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Lumo",
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable-${arch}.${ext}"
+    },
+    "extraResources": [
+      {
+        "from": "assets/lumo.ico",
+        "to": "assets/lumo.ico"
+      }
+    ]
+  }
+}

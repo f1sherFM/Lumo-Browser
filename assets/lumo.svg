@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Lumo Orbit</title><desc id="desc">A violet planet with a luminous orbital ring and a small star.</desc>
+<defs>
+  <radialGradient id="space" cx="35%" cy="22%" r="82%"><stop offset="0" stop-color="#211936"/><stop offset="1" stop-color="#0E1016"/></radialGradient>
+  <radialGradient id="planet" cx="31%" cy="20%" r="82%"><stop offset="0" stop-color="#d9b5ff"/><stop offset=".34" stop-color="#9b5cff"/><stop offset=".72" stop-color="#6438e8"/><stop offset="1" stop-color="#24184e"/></radialGradient>
+  <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0ff"/><stop offset=".24" stop-color="#dcb4ff"/><stop offset=".58" stop-color="#8d5aff"/><stop offset="1" stop-color="#6540e8"/></linearGradient>
+  <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#f3d8ff"/><stop offset="1" stop-color="#a778ff"/></linearGradient>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="planetClip"><circle cx="119" cy="130" r="70"/></clipPath>
+</defs>
+<rect x="5" y="5" width="246" height="246" rx="58" fill="url(#space)" stroke="#30264b" stroke-width="2"/>
+<!-- rear half of the orbit -->
+<ellipse cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="#3a275f" stroke-width="13" opacity=".8"/>
+<ellipse cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="url(#ring)" stroke-width="7" opacity=".76"/>
+<!-- planet -->
+<circle cx="119" cy="130" r="70" fill="#7e4cf2" opacity=".23" filter="url(#glow)"/>
+<circle cx="119" cy="130" r="70" fill="url(#planet)" stroke="#caa2ff" stroke-opacity=".62" stroke-width="2"/>
+<g clip-path="url(#planetClip)" opacity=".3" fill="none" stroke="#e8d0ff" stroke-width="2">
+  <path d="M35 112 Q90 78 159 99 T207 93"/><path d="M39 146 Q101 115 171 142 T207 132"/><path d="M61 184 Q112 158 179 177"/>
+</g>
+<ellipse cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="url(#ring)" stroke-width="8" pathLength="1000" stroke-dasharray="500 500" stroke-dashoffset="0" stroke-linecap="round" filter="url(#glow)"/>
+<!-- small orbital star -->
+<path d="M203 54 C207 70 213 76 229 80 C213 84 207 90 203 106 C199 90 193 84 177 80 C193 76 199 70 203 54Z" fill="url(#shine)" filter="url(#glow)"/>
+<circle cx="174" cy="55" r="2.5" fill="#f6e7ff"/><circle cx="220" cy="120" r="1.7" fill="#c6a2ff"/>
+</svg>

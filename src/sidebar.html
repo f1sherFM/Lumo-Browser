@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' http: https: data:; connect-src 'self';" />
+  <title>Lumo Sidebar</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="sidebar.js"></script>
+</head>
+<body>
+  <header class="chrome" aria-label="Browser sidebar">
+    <aside class="sidebar" aria-label="Browser navigation and tabs">
+      <div class="titlebar">
+        <div class="brand" aria-label="Lumo browser">
+          <svg class="brand-mark" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="orbitPlanet" cx="31%" cy="20%" r="82%"><stop offset="0" stop-color="#d9b5ff"/><stop offset=".34" stop-color="#9b5cff"/><stop offset=".72" stop-color="#6438e8"/><stop offset="1" stop-color="#24184e"/></radialGradient>
+              <linearGradient id="orbitRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0ff"/><stop offset=".45" stop-color="#c58cff"/><stop offset="1" stop-color="#6540e8"/></linearGradient>
+            </defs>
+            <ellipse class="orbit-ring-back" cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="#a978ff" stroke-width="10" opacity=".78"/>
+            <circle class="orbit-planet" cx="119" cy="130" r="70" fill="url(#orbitPlanet)" stroke="#d6b2ff" stroke-opacity=".7" stroke-width="3"/>
+            <ellipse class="orbit-ring-front" cx="121" cy="132" rx="91" ry="31" transform="rotate(-28 121 132)" fill="none" stroke="url(#orbitRing)" stroke-width="10" pathLength="1000" stroke-dasharray="500 500" stroke-dashoffset="0" stroke-linecap="round"/>
+            <path class="orbit-star" d="M203 54 C207 70 213 76 229 80 C213 84 207 90 203 106 C199 90 193 84 177 80 C193 76 199 70 203 54Z" fill="#f3d8ff"/>
+          </svg>
+          <span class="brand-name">lumo</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-utilities" aria-label="Browser navigation">
+        <button class="utility-button" id="searchUtility" type="button" title="Search or enter address (Ctrl+L)" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.5 4.5"/></svg>
+          <span>Search</span>
+        </button>
+        <button class="utility-button" id="homeUtility" type="button" title="Home" aria-label="Home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10 8.5-7 8.5 7M5.5 9v11h13V9M9.5 20v-6h5v6"/></svg>
+          <span>Home</span>
+        </button>
+      </nav>
+
+      <section class="pinned-sites" aria-label="Saved site shortcuts">
+        <div class="tabs-heading"><span class="tabs-label">PINNED SITES</span><span class="tabs-count" id="pinnedSitesCount">0</span></div>
+        <div class="pinned-sites-list" id="pinnedSitesList"></div>
+        <button class="new-tab-button save-site-button" id="saveSiteButton" type="button" title="Save current website as a permanent shortcut" aria-label="Save current website"><span aria-hidden="true">＋</span><span>Save current site</span></button>
+      </section>
+
+      <section class="sidebar-tabs" aria-label="Open tabs">
+        <div class="tabs-heading">
+          <span class="tabs-label">TABS</span>
+          <span class="tabs-count" id="tabsCount">0 open</span>
+        </div>
+        <div class="tabs-list" id="tabsList" role="tablist" aria-label="Browser tabs"></div>
+        <button class="new-tab-button" id="newTabButton" type="button" title="New tab (Ctrl+T)" aria-label="New tab">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          <span>New tab</span>
+        </button>
+      </section>
+
+      <footer class="sidebar-footer">
+        <button class="utility-button settings-utility" id="settingsUtility" type="button" title="Settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.2.9-1.3 2.2-1.4-.6a7.9 7.9 0 0 1-1.6.9l-.2 1.5h-2.6l-.2-1.5a7.9 7.9 0 0 1-1.6-.9l-1.4.6-1.3-2.2 1.2-.9a7.4 7.4 0 0 1 0-1.9l-1.2-.9 1.3-2.2 1.4.6a7.9 7.9 0 0 1 1.6-.9l.2-1.5h2.6l.2 1.5a7.9 7.9 0 0 1 1.6.9l1.4-.6 1.3 2.2-1.2.9a7.4 7.4 0 0 1 0 1.9Z"/></svg>
+          <span>Settings</span>
+        </button>
+      </footer>
+    </aside>
+  </header>
+  <div class="tab-context-menu" id="tabContextMenu" role="menu" aria-label="Tab actions" hidden></div>
+</body>
+</html>

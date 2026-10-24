@@ -1,0 +1,8 @@
+{
+  "searchEngine": "duckduckgo",
+  "network": {
+    "mode": "custom",
+    "proxyUrl": "socks5://127.0.0.1:10808"
+  },
+  "startupBehavior": "restore"
+}

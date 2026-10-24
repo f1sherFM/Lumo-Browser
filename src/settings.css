@@ -1,0 +1,129 @@
+:root {
+  color-scheme: dark;
+  --bg: #0e1016;
+  --surface: #171a24;
+  --surface-raised: #1d202b;
+  --surface-hover: #252838;
+  --border: #2e303d;
+  --text: #ededf5;
+  --muted: #8f94a8;
+  --muted-2: #63697d;
+  --accent: #ab91fa;
+  --accent-soft: rgba(171, 145, 250, .12);
+  --mint: #6eccab;
+  --danger: #ffaaa4;
+  font-family: Inter, "Segoe UI Variable", "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: transparent; color: var(--text); user-select: none; }
+button, input, select { font: inherit; }
+button { color: inherit; }
+.settings-shell {
+  position: relative;
+  width: 100%; height: 100%; padding: 18px 16px 13px; overflow-y: auto;
+  border: 1px solid #343342; border-radius: 16px;
+  background: linear-gradient(155deg, rgba(29, 30, 44, .98) 0%, #171a24 42%, #151821 100%);
+  box-shadow: 0 20px 60px #0009;
+  scrollbar-width: thin; scrollbar-color: #3b3c4d transparent;
+}
+.settings-shell::-webkit-scrollbar { width: 6px; }
+.settings-shell::-webkit-scrollbar-thumb { background: #3b3c4d; border-radius: 6px; }
+.settings-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
+.settings-title-group { display: flex; align-items: center; gap: 11px; min-width: 0; }
+.settings-mark { display: block; width: 34px; height: 34px; flex: 0 0 34px; padding: 4px; border: 1px solid #463b62; border-radius: 11px; background: #29213f; filter: drop-shadow(0 0 11px rgba(171,145,250,.13)); }
+.settings-heading-copy { min-width: 0; }
+.settings-eyebrow { color: #a69cc7; font-size: 8px; line-height: 1.4; font-weight: 750; letter-spacing: .15em; }
+h1 { margin: 3px 0 0; font-size: 21px; letter-spacing: -.045em; line-height: 1.15; font-weight: 680; }
+.settings-intro { margin: 4px 0 0; color: #8790a2; font-size: 11px; line-height: 1.3; }
+.settings-close { display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 30px; padding: 0 0 2px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: #99a1b2; font-size: 23px; line-height: 1; cursor: pointer; transition: background .16s ease, border-color .16s ease, color .16s ease; }
+.settings-close:hover { border-color: #3b3b50; background: #242637; color: #fff; }
+.settings-close:focus-visible, .secondary-button:focus-visible, .save-button:focus-visible, .settings-section select:focus-visible, .settings-section input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.settings-section { padding: 13px 12px 14px; margin: 0 0 10px; border: 1px solid #2c2f3e; border-radius: 13px; background: rgba(14, 16, 22, .34); box-shadow: 0 1px 0 rgba(255,255,255,.018) inset; }
+.section-heading { display: flex; align-items: center; gap: 9px; margin: 0 0 12px; }
+.section-icon { display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 30px; border: 1px solid #43395e; border-radius: 9px; background: #27213a; color: var(--accent); }
+.section-icon svg { display: block; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.settings-section h2 { margin: 0; color: #e9e7f3; font-size: 13px; line-height: 1.3; letter-spacing: -.015em; font-weight: 680; }
+.settings-section .section-heading p { margin: 3px 0 0; color: #81899a; font-size: 10px; line-height: 1.3; }
+.settings-section label { display: block; margin: 0 0 6px; color: #afb6c5; font-size: 11px; line-height: 1.3; font-weight: 550; }
+.control-wrap { position: relative; }
+.settings-section select, .settings-section input:not([type="checkbox"]) {
+  display: block; width: 100%; height: 39px; padding: 0 12px;
+  color: #eef0f4; background: #11141c; border: 1px solid #343746; border-radius: 10px;
+  outline: none; font-size: 12px; line-height: 1.3; font-weight: 450; transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.settings-section select { appearance: none; padding-right: 36px; cursor: pointer; }
+.settings-section select:hover, .settings-section input:not([type="checkbox"]):hover { background: #141722; border-color: #424459; }
+.settings-section select:focus, .settings-section input:not([type="checkbox"]):focus { border-color: #8c73d4; box-shadow: 0 0 0 3px rgba(171,145,250,.11); background: #141722; }
+.settings-section select option { color: #ededf5; background: #171a24; }
+.select-chevron { position: absolute; pointer-events: none; right: 11px; top: 50%; width: 15px; height: 15px; transform: translateY(-50%); fill: none; stroke: #9299ac; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.settings-section label[hidden], .settings-section input[hidden] { display: none !important; }
+#proxyUrlLabel { margin-top: 11px; }
+.field-hint { margin: 7px 0 0; color: #7e8798; font-size: 10px; line-height: 1.45; }
+.route-status { position: relative; min-height: 38px; display: flex; align-items: center; margin: 1px 0 12px; padding: 9px 10px 9px 30px; border: 1px solid #343746; border-radius: 10px; background: #11141b; color: #a0a9ba; font-size: 10px; line-height: 1.4; overflow-wrap: anywhere; }
+.route-status::before { position: absolute; left: 12px; top: 50%; width: 6px; height: 6px; border-radius: 50%; content: ""; transform: translateY(-50%); background: #81899a; }
+.route-status[data-state="ready"] { border-color: #345346; background: rgba(28, 51, 43, .36); color: #9bd8b7; }
+.route-status[data-state="ready"]::before { background: var(--mint); box-shadow: 0 0 9px rgba(110,204,171,.32); }
+.route-status[data-state="error"] { border-color: #65403f; background: rgba(68, 36, 38, .32); color: #ffbdb7; }
+.route-status[data-state="error"]::before { background: var(--danger); box-shadow: 0 0 9px rgba(255,170,164,.18); }
+.settings-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.secondary-button, .save-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 38px; padding: 0 13px; border: 1px solid #373a49; border-radius: 10px; font-size: 11px; line-height: 1.2; font-weight: 650; cursor: pointer; transition: transform .14s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, filter .16s ease; }
+.secondary-button { color: #b7bfcd; background: #20232e; }
+.secondary-button:hover { border-color: #484b5d; background: #282b38; color: #edf0f5; }
+.save-button { color: #1a1425; background: linear-gradient(135deg, #c1afff, #ab91fa 55%, #9576ef); border-color: #b5a0ff; box-shadow: 0 4px 16px rgba(171,145,250,.15), 0 1px 0 rgba(255,255,255,.28) inset; }
+.save-button svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.save-button:hover { filter: brightness(1.06); box-shadow: 0 5px 19px rgba(171,145,250,.22), 0 1px 0 rgba(255,255,255,.28) inset; }
+.secondary-button:active, .save-button:active { transform: translateY(1px) scale(.99); }
+.save-button:disabled { opacity: .55; cursor: wait; box-shadow: none; }
+footer { display: flex; gap: 6px; align-items: flex-start; margin-top: 12px; padding: 0 1px; color: #727b8d; font-size: 9px; line-height: 1.45; }
+footer::before { content: "i"; display: inline-grid; place-items: center; width: 13px; height: 13px; flex: 0 0 13px; margin-top: 0; border: 1px solid #505568; border-radius: 50%; color: #8992a4; font-size: 8px; font-weight: 700; }
+@media (max-height: 470px) {
+  .settings-shell { padding-top: 12px; }
+  .settings-header { margin-bottom: 10px; }
+  .settings-section { padding-top: 10px; padding-bottom: 10px; margin-bottom: 8px; }
+  .settings-section .section-heading { margin-bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Functional settings controls added for the MVP settings milestone. */
+.settings-button-row { display: flex; gap: 8px; }
+.settings-button-row .secondary-button { flex: 1; }
+.full-width-button { width: 100%; margin-top: 8px; }
+.permission-list { display: flex; flex-direction: column; gap: 7px; }
+.permission-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 9px; border: 1px solid #303342; border-radius: 10px; background: rgba(10, 12, 18, .4); }
+.permission-detail { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.permission-origin { color: #e3e5ef; font-size: 11px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.permission-description { color: #8f94a8; font-size: 10px; line-height: 1.3; }
+.permission-state { padding: 4px 6px; border-radius: 999px; font-size: 9px; line-height: 1.1; font-weight: 700; white-space: nowrap; }
+.permission-state.is-allowed { color: #9bd8b7; background: rgba(42, 92, 69, .32); border: 1px solid rgba(110, 204, 171, .22); }
+.permission-state.is-blocked { color: #ffbbb4; background: rgba(100, 48, 52, .28); border: 1px solid rgba(255, 170, 164, .2); }
+.small-action-button { min-height: 28px; padding: 0 8px; border: 1px solid #3a3d4e; border-radius: 8px; color: #cac4e0; background: #222432; font-size: 10px; font-weight: 650; cursor: pointer; }
+.small-action-button:hover { border-color: #8c73d4; background: #2a273a; color: #fff; }
+.empty-state { margin: 0; padding: 12px 10px; border: 1px dashed #333647; border-radius: 10px; color: #7f879a; font-size: 11px; line-height: 1.4; text-align: center; }
+.clear-data-options { display: flex; flex-direction: column; gap: 3px; }
+.settings-section label.check-row { display: flex; align-items: flex-start; gap: 9px; margin: 0; padding: 9px 8px; border: 1px solid transparent; border-radius: 9px; cursor: pointer; }
+.settings-section label.check-row:hover { border-color: #303244; background: rgba(33, 35, 49, .54); }
+.check-row input[type="checkbox"] { appearance: none; display: block; position: relative; flex: 0 0 16px; width: 16px; height: 16px; margin: 1px 0 0; padding: 0; border: 1px solid #4a4d60; border-radius: 5px; background: #10121a; cursor: pointer; }
+.check-row input[type="checkbox"]:checked { border-color: #ab91fa; background: #ab91fa; box-shadow: 0 0 0 3px rgba(171,145,250,.1); }
+.check-row input[type="checkbox"]:checked::after { content: ""; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px; border: solid #1b1727; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.check-row input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.check-row span { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.check-row strong { color: #cbd0dd; font-size: 11px; line-height: 1.3; font-weight: 600; }
+.check-row small { color: #7f879a; font-size: 10px; line-height: 1.4; font-weight: 400; }
+.danger-button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 12px; border: 1px solid #704247; border-radius: 10px; color: #ffbbb4; background: linear-gradient(135deg, rgba(88, 40, 46, .55), rgba(46, 28, 37, .75)); font: inherit; font-size: 11px; line-height: 1.25; font-weight: 680; cursor: pointer; transition: background .16s ease, border-color .16s ease, opacity .16s ease; }
+.danger-button:hover { border-color: #a45a63; background: rgba(104, 45, 52, .65); }
+.danger-button:disabled, .secondary-button:disabled, .small-action-button:disabled { opacity: .52; cursor: wait; }
+.danger-button:focus-visible, .small-action-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.settings-notice { margin: 0 0 10px; padding: 9px 10px; border: 1px solid #37394a; border-radius: 10px; color: #c5c9d5; background: #12151d; font-size: 10px; line-height: 1.45; overflow-wrap: anywhere; }
+.settings-notice[data-state="success"] { border-color: #345346; color: #9bd8b7; background: rgba(28, 51, 43, .36); }
+.settings-notice[data-state="error"] { border-color: #65403f; color: #ffbdb7; background: rgba(68, 36, 38, .32); }
+.settings-notice[hidden] { display: none; }
+.settings-section select:focus-visible, .settings-section input:not([type="checkbox"]):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 390px) {
+  .permission-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .permission-state { grid-column: 2; grid-row: 1; }
+  .permission-row .small-action-button { grid-column: 2; justify-self: end; }
+}
